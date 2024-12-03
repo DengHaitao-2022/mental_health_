@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_image"
+    android:padding="16dp">
+
+    <!-- 用户名输入框 -->
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="用户名"
+        android:inputType="text"
+        android:layout_alignParentTop="true"
+        android:elevation="4dp"/>
+
+    <!-- 性别选择（单选按钮） -->
+    <RadioGroup
+        android:elevation="4dp"
+        android:id="@+id/genderRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usernameEditText"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:elevation="4dp"
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="男" />
+
+        <RadioButton
+            android:elevation="4dp"
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="女" />
+    </RadioGroup>
+
+    <!-- 爱好选择（复选框） -->
+    <CheckBox
+        android:elevation="4dp"
+        android:id="@+id/hobbyReading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="阅读"
+        android:layout_below="@id/genderRadioGroup"
+        android:layout_marginTop="16dp" />
+
+    <CheckBox
+        android:elevation="4dp"
+        android:id="@+id/hobbySports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="运动"
+        android:layout_below="@id/hobbyReading"
+        android:layout_marginTop="8dp" />
+
+    <CheckBox
+        android:elevation="4dp"
+        android:id="@+id/hobbyMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="音乐"
+        android:layout_below="@id/hobbySports"
+        android:layout_marginTop="8dp" />
+
+    <!-- 年龄输入框 -->
+    <EditText
+        android:elevation="4dp"
+        android:id="@+id/ageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="年龄"
+        android:inputType="number"
+        android:layout_below="@id/hobbyMusic"
+        android:layout_marginTop="16dp" />
+
+    <!-- 邮件/电话号码输入框 -->
+    <EditText
+        android:elevation="4dp"
+        android:id="@+id/emailOrPhoneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="邮箱或电话"
+        android:inputType="textEmailAddress|phone"
+        android:layout_below="@id/ageEditText"
+        android:layout_marginTop="16dp" />
+
+    <!-- 密码输入框 -->
+    <EditText
+        android:elevation="4dp"
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="密码"
+        android:inputType="textPassword"
+        android:layout_below="@id/emailOrPhoneEditText"
+        android:layout_marginTop="16dp" />
+
+    <!-- 简介输入框 -->
+    <EditText
+        android:elevation="4dp"
+        android:id="@+id/descriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:hint="简介"
+        android:inputType="textMultiLine"
+        android:layout_below="@id/passwordEditText"
+        android:layout_marginTop="16dp"
+        android:gravity="top|start"
+        android:background="@drawable/edittex_background"/>
+
+    <!-- 注册按钮 -->
+    <Button
+        android:elevation="4dp"
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        android:layout_below="@id/descriptionEditText"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>

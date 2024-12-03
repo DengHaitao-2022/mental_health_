@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 顶部区域：用户头像和用户名在左边，发布新内容按钮在右边 -->
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- 用户头像 -->
+        <ImageView
+            android:id="@+id/userAvatar"
+            android:layout_width="56dp"
+            android:layout_height="53dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/user_head_png" />
+
+        <!-- 用户名 -->
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="220dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="用户名"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/addPostImageView"
+            android:layout_width="40dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_vertical|end"
+            android:contentDescription="发布新内容"
+            android:src="@drawable/tree_hole_add" />
+
+    </LinearLayout>
+
+
+    <!-- 中间区域：显示树洞内容 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="583dp"
+        android:layout_below="@+id/linearLayout2"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userAvatar"
+            android:layout_alignBottom="@+id/linearLayout2"
+            android:layout_marginBottom="87dp"
+            tools:ignore="NotSibling" />
+    </LinearLayout>
+
+    <!-- 底部区域：引入其他布局内容 -->
+    <include
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/bottom_dao_hang"/>
+
+</RelativeLayout>

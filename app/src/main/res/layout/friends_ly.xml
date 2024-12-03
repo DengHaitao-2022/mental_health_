@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/fragment_container_view_tag"
+        android:layout_width="315dp"
+        android:layout_height="180dp"
+        android:src="@drawable/user_friend_png"
+        android:background="@drawable/rounder_concer"
+        />
+    <TextView
+        android:layout_below="@+id/fragment_container_view_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="还在研发，敬请期待"
+        android:textSize="80dp"/>
+
+
+</RelativeLayout>
