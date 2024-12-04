@@ -6,12 +6,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
-import com.example.pyhy.Login.DiaryWrite.Diary;
 import com.example.pyhy.R;
-
 import java.util.ArrayList;
+
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHolder> {
 
     private ArrayList<Diary> diaryList;
@@ -38,11 +36,13 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHol
         // 设置日记文本
         holder.textDiary.setText(diary.getText());
 
-        // 如果有图片，设置图片；否则隐藏 ImageView
-        if (diary.getImagePath() != null && !diary.getImagePath().isEmpty()) {
+        // 如果有图片，加载图片；否则隐藏 ImageView
+        if (diary.getImagePath() != null ) {
             holder.imageDiary.setVisibility(View.VISIBLE);
             Glide.with(holder.itemView.getContext())  // 使用Glide加载图片
-                    .load(diary.getImagePath())
+                    .load(diary.getImagePath())        // 图片路径
+                    .error(R.drawable.p_2)     // 图片加载失败时显示的默认图片
+                    .fallback(R.drawable.p_1)  // 如果图片路径为空或无效时显示的占位符
                     .into(holder.imageDiary);
         } else {
             holder.imageDiary.setVisibility(View.GONE);  // 没有图片时隐藏ImageView

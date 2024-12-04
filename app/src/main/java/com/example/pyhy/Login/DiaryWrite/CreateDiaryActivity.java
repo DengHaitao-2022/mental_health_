@@ -26,7 +26,7 @@ public class CreateDiaryActivity extends AppCompatActivity {
     private EditText editTextDiary;
     private Button buttonSaveDiary, buttonSelectImage;
     private ImageView imageView;
-    private String imagePath = "";  // 用于存储图片的本地路径
+    private Uri imagePath;  // 用于存储图片的本地路径
     private Diary diary;  // 用于存储日记内容和图片路径
 
     @Override
@@ -79,7 +79,7 @@ public class CreateDiaryActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 1 && data != null) {
             Uri imageUri = data.getData();
-            imagePath = getRealPathFromURI(imageUri);  // 获取图片的本地路径
+            imagePath = Uri.parse(getRealPathFromURI(imageUri));  // 获取图片的本地路径
             diary.setImagePath(imagePath);  // 将图片路径设置到 diary 对象中
             imageView.setImageURI(imageUri);  // 显示图片
         }

@@ -18,7 +18,6 @@ import com.example.pyhy.Login.AIchat.Message;
 import com.example.pyhy.Login.AIchat.MessageAdapter;
 import com.example.pyhy.R;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -85,7 +84,6 @@ public class SmartChatActivity extends AppCompatActivity {
             messageAdapter.notifyDataSetChanged();
             recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
         });
-        addResponse("测试回答：》》》》");
     }
 
     // 添加机器人回应到聊天列表
