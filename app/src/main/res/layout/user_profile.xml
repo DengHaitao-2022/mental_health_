@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/user_background_png">
+
+    <!-- 头像 -->
+    <ImageView
+        android:id="@+id/avatarImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/user_head_png"
+        android:contentDescription="用户头像"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 用户名和账号信息 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/usernameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户名:"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/accountTextView"
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:text="johndoe@gmail.com"
+            android:textColor="#888888"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- 个人简介 -->
+    <TextView
+        android:id="@+id/bioLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="个人简介"
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:id="@+id/bioEditText"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_marginTop="8dp"
+        android:hint="请输入个人简介"
+        android:padding="10dp" />
+
+    <!-- 兴趣爱好 -->
+    <TextView
+        android:id="@+id/interestsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="兴趣爱好"
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:id="@+id/interestsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入兴趣"
+        android:layout_marginTop="8dp"
+        android:padding="10dp" />
+
+    <!-- 查看树洞 -->
+    <TextView
+        android:id="@+id/viewDohHoleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="最近发的树洞:"
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:layout_marginTop="20dp" />
+
+    <!-- 树洞内容 -->
+    <LinearLayout
+        android:id="@+id/dohHoleContainer"
+        android:layout_width="match_parent"
+        android:layout_height="142dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical">
+
+        <!-- 树洞1 -->
+        <LinearLayout
+            android:id="@+id/user_tree_hole"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Doh Hole Image"
+                android:src="@drawable/user_tree_hole" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="这是树洞内容文本，简短描述一下树洞内容。"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 退出和切换账号按钮 -->
+        <LinearLayout
+            android:id="@+id/buttonContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:text="退出登录"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <!-- 底部导航 -->
+    <include layout="@layout/bottom_dao_hang" />
+</LinearLayout>

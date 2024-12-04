@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:layout_marginBottom="10dp">
+
+    <!-- 发布人头像 -->
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/user_head_png" />
+
+    <!-- 用户名 -->
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/avatar"
+        android:layout_alignTop="@id/avatar"
+        android:layout_marginStart="8dp"
+        android:text="用户名"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+    <!-- 树洞内容 -->
+    <TextView
+        android:id="@+id/treeHoleContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/avatar"
+        android:layout_marginTop="8dp"
+        android:text="树洞内容"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <!-- 发布时间 -->
+    <TextView
+        android:id="@+id/treeHoleTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/treeHoleContent"
+        android:layout_marginTop="8dp"
+        android:text="发布时间：2024年12月2日 10:00"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp" />
+
+    <!-- 评论数量 -->
+    <TextView
+        android:id="@+id/commentCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/treeHoleTime"
+        android:layout_marginTop="4dp"
+        android:text="评论（0）"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp" />
+
+</RelativeLayout>
