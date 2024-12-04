@@ -93,7 +93,7 @@
             android:layout_marginEnd="10dp" />
 
         <!-- 发送按钮 -->
-        <ImageView
+        <ImageButton
             android:id="@+id/sendButton"
             android:layout_width="40dp"
             android:layout_height="40dp"

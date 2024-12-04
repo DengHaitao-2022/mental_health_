@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +22,7 @@ public class TreeHoleActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TreeHoleAdapter adapter;
     private List<TreeHole> treeHoleList = new ArrayList<>();
-    private Button postButton;
+    private ImageButton postButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,7 @@ public class TreeHoleActivity extends AppCompatActivity {
         setContentView(R.layout.tree_hole);
 
         recyclerView = findViewById(R.id.recyclerView);
-        postButton = findViewById(R.id.postButton);
+        postButton = findViewById(R.id.addPostImageView);
 
         // 设置 RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

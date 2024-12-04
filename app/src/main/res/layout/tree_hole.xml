@@ -32,7 +32,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/addPostImageView"
             android:layout_width="40dp"
             android:layout_height="55dp"
