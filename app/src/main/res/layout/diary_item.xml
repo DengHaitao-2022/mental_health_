@@ -28,14 +28,14 @@
             android:src="@drawable/background_image"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
+            android:visibility="gone"
              />
-        <!--android:visibility="gone"-->
+
         <TextView
             android:id="@+id/textTimestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Timestamp"
-            android:textColor="#808080"
             android:textSize="12sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

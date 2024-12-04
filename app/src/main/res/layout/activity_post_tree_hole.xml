@@ -19,8 +19,6 @@
         android:id="@+id/postButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:textColor="@color/black"
         android:text="发布树洞"
         android:layout_marginTop="16dp"/>
 </LinearLayout>

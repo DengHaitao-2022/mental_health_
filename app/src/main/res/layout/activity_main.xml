@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background_image"
+        android:src="@drawable/background_image_new"
         android:scaleType="centerCrop"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
@@ -20,7 +20,7 @@
     <!-- Logo -->
     <ImageView
         android:id="@+id/logoImageView"
-        android:layout_width="136dp"
+        android:layout_width="match_parent"
         android:layout_height="135dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
@@ -72,7 +72,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:backgroundTint="@color/colorPrimary" />
+         />
 
     <!-- Register Button -->
     <Button
@@ -84,7 +84,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:backgroundTint="@color/colorAccent" />
+        />
 
     <!-- Register Link -->
     <TextView
@@ -92,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="没有账号? 立即注册"
-        android:textColor="@color/colorPrimary"
+
         android:textSize="14sp"
         android:layout_below="@id/registerButton"
         android:layout_centerHorizontal="true"

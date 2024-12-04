@@ -6,23 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".Login.MoodRecordActivity">
 
-    <Button
+    <!-- 写下心情按钮 -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonCreateDiary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="写下心情"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/colorPrimary"
+        app:cornerRadius="16dp" />
 
+    <!-- 心情记录列表 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCreateDiary"
+        app:layout_constraintTop_toBottomOf="@id/buttonCreateDiary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

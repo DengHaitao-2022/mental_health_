@@ -22,7 +22,6 @@
         android:layout_alignTop="@id/avatar"
         android:layout_marginStart="8dp"
         android:text="用户名"
-        android:textColor="@android:color/black"
         android:textSize="14sp" />
 
     <!-- 树洞内容 -->
@@ -33,7 +32,6 @@
         android:layout_below="@id/avatar"
         android:layout_marginTop="8dp"
         android:text="树洞内容"
-        android:textColor="@android:color/black"
         android:textSize="16sp" />
 
     <!-- 发布时间 -->
@@ -44,7 +42,6 @@
         android:layout_below="@id/treeHoleContent"
         android:layout_marginTop="8dp"
         android:text="发布时间：2024年12月2日 10:00"
-        android:textColor="@android:color/darker_gray"
         android:textSize="12sp" />
 
     <!-- 评论数量 -->
@@ -55,7 +52,6 @@
         android:layout_below="@id/treeHoleTime"
         android:layout_marginTop="4dp"
         android:text="评论（0）"
-        android:textColor="@android:color/darker_gray"
         android:textSize="12sp" />
 
 </RelativeLayout>

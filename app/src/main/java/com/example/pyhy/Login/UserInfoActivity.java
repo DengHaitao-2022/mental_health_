@@ -1,15 +1,19 @@
 package com.example.pyhy.Login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pyhy.MainActivity;
 import com.example.pyhy.R;
 
 public class UserInfoActivity extends AppCompatActivity {
@@ -22,6 +26,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private EditText interestsEditText;
     private TextView viewDohHoleLabel;
     private LinearLayout dohHoleContainer;
+    private Button logoutbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +42,11 @@ public class UserInfoActivity extends AppCompatActivity {
         interestsEditText = findViewById(R.id.interestsEditText);
         viewDohHoleLabel = findViewById(R.id.viewDohHoleLabel);
         dohHoleContainer = findViewById(R.id.dohHoleContainer);
+        logoutbutton = findViewById(R.id.logoutButton);
 
         // 设置用户信息（可以从 Intent 或数据库加载）
         // 这里我们假设设置了一个示例用户信息
+
 
         // 设置头像
         avatarImageView.setImageResource(R.drawable.user_head_png);  // 替换成实际头像图片
@@ -86,7 +93,30 @@ public class UserInfoActivity extends AppCompatActivity {
         findViewById(R.id.nav_user_info).setOnClickListener(v -> { // 用户信息
             Toast.makeText(UserInfoActivity.this,"已经在了哦",Toast.LENGTH_SHORT).show();
         });
-        
+
+        logoutbutton.setOnClickListener(view -> {
+            // 创建一个确认退出登录的对话框
+            new AlertDialog.Builder(view.getContext())
+                    .setTitle("确认退出登录")
+                    .setMessage("您确定要退出登录吗？")
+                    .setPositiveButton("是", (dialog, which) -> {
+                        // 清除登录状态
+                        SharedPreferences sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.remove("is_logged_in");  // 删除登录状态
+                        editor.remove("user_token");  // 删除保存的用户信息（如果有）
+                        editor.apply();  // 保存更改
+
+                        // 跳转到登录页面（MainActivity）
+                        Intent intent = new Intent(view.getContext(), MainActivity.class);
+                        startActivity(intent);
+                        finish();  // 退出当前页面
+                    })
+                    .setNegativeButton("否", null)  // 用户点击"否"时什么都不做
+                    .show();
+        });
+
+
     }
 
     // 设置树洞内容的示例方法

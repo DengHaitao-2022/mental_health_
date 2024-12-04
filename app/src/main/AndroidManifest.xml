@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -36,7 +39,10 @@
 
         <activity android:name=".Login.PsychResourcesActivity"/> <!--心里资源-->
 
-        <activity android:name=".Login.MessagesActivity"/> <!--好友消息-->
+        <activity android:name=".Login.PsychRecord.ResourceDetailActivity">
+            <!-- 可选: 如果你希望它作为新的任务启动，或者有特殊的启动配置，可以添加更多属性 -->
+        </activity>
+
 
         <activity android:name=".Login.UserInfoActivity"/> <!--个人信息界面-->
 

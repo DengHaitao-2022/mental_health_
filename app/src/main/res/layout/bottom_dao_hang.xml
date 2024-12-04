@@ -1,126 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
     <!-- 底部导航 -->
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#2D3E50"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_height="80dp"
+        android:layout_margin="0dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- 主界面返回 -->
         <LinearLayout
-            android:id="@+id/return_user_main"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#2D3E50"
             android:gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:contentDescription="主页"
-                android:src="@drawable/user_news_png" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- 主界面返回 -->
+            <LinearLayout
+                android:id="@+id/return_user_main"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="主页"
-                android:textSize="12sp"
-                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:textColor="#666666" />
-        </LinearLayout>
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
 
-        <!-- 短视频 -->
-        <LinearLayout
-            android:id="@+id/nav_short_videos"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="主页"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:contentDescription="短视频"
-                android:src="@drawable/user_video_png" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- 短视频 -->
+            <LinearLayout
+                android:id="@+id/nav_short_videos"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="短视频"
-                android:textSize="12sp"
-                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:textColor="#666666" />
-        </LinearLayout>
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
 
-        <!-- 好友 -->
-        <LinearLayout
-            android:id="@+id/nav_friends"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="心理资源"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:contentDescription="好友"
-                android:src="@drawable/user_friend_png" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- 好友 -->
+            <LinearLayout
+                android:id="@+id/nav_friends"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="好友"
-                android:textSize="12sp"
-                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:textColor="#666666" />
-        </LinearLayout>
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
 
-        <!-- 我的 -->
-        <LinearLayout
-            android:id="@+id/nav_user_info"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="智能对话"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:contentDescription="我的"
-                android:src="@drawable/user_info_png" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- 我的 -->
+            <LinearLayout
+                android:id="@+id/nav_user_info"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="我的"
-                android:textSize="12sp"
-                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:textColor="#666666" />
-        </LinearLayout>
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
 
-    </LinearLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我的"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -80,25 +80,6 @@ public class MainActivity extends AppCompatActivity {
                     } finally {
                         finish(); // 关闭当前登录界面
                     }
-//                if (username.equals(user.getPhone().toString()) && password.equals(user.getPasswd())) {
-//                    // 登录成功，保存登录状态
-//                    SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
-//                    SharedPreferences.Editor editor = prefs.edit();
-//                    editor.putBoolean("is_logged_in", true);
-//                    editor.apply();
-//
-//                    // 跳转到主界面
-//                    try {
-//                        Intent intent = new Intent(MainActivity.this, User_Main.class);
-//                        startActivity(intent);
-//                    } catch (Exception e) {
-//                        Log.d("denglu", "Error launching User_Main activity: " + e.getMessage());
-//                    } finally {
-//                        finish(); // 关闭当前登录界面
-//                    }
-//                } else {
-//                    Toast.makeText(this, "用户名或者密码错误,请重新输入", Toast.LENGTH_SHORT).show();
-//                }
             }
         });
 
@@ -118,13 +99,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkLoginStatus() {
+        // 获取名为 "user_info" 的 SharedPreferences 文件，并指定模式为 MODE_PRIVATE
         SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
+
+        // 从 SharedPreferences 中获取 "is_logged_in" 键的值，默认值为 false
         boolean isLoggedIn = prefs.getBoolean("is_logged_in", false);
 
+        // 判断用户是否已登录
         if (isLoggedIn) {
+            // 如果已登录，创建一个 Intent，用于跳转到 User_Main 活动（界面）
             Intent intent = new Intent(MainActivity.this, User_Main.class);
+
+            // 启动 User_Main 活动
             startActivity(intent);
+
+            // 结束当前 MainActivity 活动
             finish();
         }
     }
+
 }

@@ -2,10 +2,13 @@ package com.example.pyhy.Login;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pyhy.Login.AIchat.Message;
 import com.example.pyhy.Login.AIchat.MessageAdapter;
 import com.example.pyhy.R;
+import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,13 +37,17 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class SmartChatActivity extends AppCompatActivity {
+
     private RecyclerView recyclerView;
     private TextView welcomeTextView;
     private EditText messageEditView;
-    private ImageButton sendButton;
+    private MaterialButton sendImage;
     private List<Message> messageList;
     private MessageAdapter messageAdapter;
     private OkHttpClient okHttpClient;
+
+    // 标志位，防止递归调用
+    private boolean isAddingResponse = false;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -51,7 +59,7 @@ public class SmartChatActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         welcomeTextView = findViewById(R.id.welcome_text);
         messageEditView = findViewById(R.id.chatEditText);
-        sendButton = findViewById(R.id.sendButton);
+        sendImage = findViewById(R.id.sendImage);
 
         messageList = new ArrayList<>();
         messageAdapter = new MessageAdapter(messageList);
@@ -64,32 +72,74 @@ public class SmartChatActivity extends AppCompatActivity {
         messageEditView.setOnClickListener(v -> welcomeTextView.setVisibility(View.GONE));
 
         // 点击发送按钮时发送消息并调用API
-        sendButton.setOnClickListener(v -> {
+        sendImage.setOnClickListener(v -> {
             String question = messageEditView.getText().toString().trim();
             if (!question.isEmpty()) {
                 addToChat(question, Message.SENT_BY_ME);
-//                callAPI(question);
                 messageEditView.setText("");
                 welcomeTextView.setVisibility(View.GONE);
+                callAPI(question);  // 调用API获取机器人的响应
             } else {
                 Toast.makeText(SmartChatActivity.this, "请输入消息", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 添加TextWatcher监听器，监听输入框的文本变化
+        messageEditView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+                // 可以在这里处理文本变化前的事情
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                // 如果输入框非空，设置按钮为深色，反之为淡色
+                if (charSequence.length() > 0) {
+                    sendImage.setEnabled(true); // 启用发送按钮
+                    sendImage.setBackgroundColor(getResources().getColor(R.color.colorPrimary)); // 深色按钮
+                } else {
+                    sendImage.setEnabled(false); // 禁用发送按钮
+                    sendImage.setBackgroundColor(getResources().getColor(R.color.colorButtonInactive)); // 淡色按钮
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // 可以在这里处理文本变化后的事情
             }
         });
     }
 
     // 添加消息到聊天列表
+    @SuppressLint("NotifyDataSetChanged")
     protected void addToChat(String message, String sentBy) {
         runOnUiThread(() -> {
             messageList.add(new Message(message, sentBy));
-            messageAdapter.notifyDataSetChanged();
+            messageAdapter.notifyItemInserted(messageList.size() - 1);  // 只刷新新增项
             recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
         });
     }
 
+    // 模拟调用API获取机器人的响应
+    private void callAPI(String question) {
+        // 这里是API调用的逻辑，可以是网络请求
+        // 假设我们收到了回应
+        String response = "测试回答：》》》》";  // 模拟回应
+        addResponse(response);
+    }
+
     // 添加机器人回应到聊天列表
     protected void addResponse(String response) {
-        addToChat(response, Message.SENT_BY_BOT);
+        // 防止递归调用
+        if (isAddingResponse) {
+            return;  // 如果已经在添加机器人回应，则直接返回
+        }
+
+        isAddingResponse = true;  // 设置标志位，表示正在添加回应
+        addToChat(response, Message.SENT_BY_BOT);  // 添加回应到聊天列表
+        isAddingResponse = false;  // 重置标志位
     }
+
 
     // 调用API接口获取回答
 //    protected void callAPI(String question) {

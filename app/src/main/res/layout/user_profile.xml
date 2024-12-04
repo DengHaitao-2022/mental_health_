@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/user_background_png">
+    android:orientation="vertical">
 
     <!-- 头像 -->
     <ImageView
@@ -29,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="用户名:"
-            android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginEnd="16dp" />
@@ -39,7 +37,6 @@
             android:layout_width="168dp"
             android:layout_height="wrap_content"
             android:text="johndoe@gmail.com"
-            android:textColor="#888888"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -51,13 +48,12 @@
         android:layout_height="wrap_content"
         android:text="个人简介"
         android:textSize="16sp"
-        android:textColor="#333333"
         android:layout_marginTop="20dp" />
 
     <EditText
         android:id="@+id/bioEditText"
         android:layout_width="match_parent"
-        android:layout_height="98dp"
+        android:layout_height="80dp"
         android:layout_marginTop="8dp"
         android:hint="请输入个人简介"
         android:padding="10dp" />
@@ -69,7 +65,6 @@
         android:layout_height="wrap_content"
         android:text="兴趣爱好"
         android:textSize="16sp"
-        android:textColor="#333333"
         android:layout_marginTop="20dp" />
 
     <EditText
@@ -87,7 +82,6 @@
         android:layout_height="wrap_content"
         android:text="最近发的树洞:"
         android:textSize="16sp"
-        android:textColor="#333333"
         android:layout_marginTop="20dp" />
 
     <!-- 树洞内容 -->
@@ -118,7 +112,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="这是树洞内容文本，简短描述一下树洞内容。"
-                android:textColor="#333333"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -139,7 +132,6 @@
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
             android:text="退出登录"
-            android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
     </LinearLayout>
     <!-- 底部导航 -->

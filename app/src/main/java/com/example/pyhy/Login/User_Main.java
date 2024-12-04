@@ -30,7 +30,7 @@ public class User_Main extends AppCompatActivity {
     private  List<Integer> imageResourceIds = new ArrayList<>();// 访问本地图片
 
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +44,7 @@ public class User_Main extends AppCompatActivity {
         imageResourceIds.add(R.drawable.p_1);
         imageResourceIds.add(R.drawable.p_2);
         imageResourceIds.add(R.drawable.p_3);
+        imageResourceIds.add(R.drawable.p_4);
 
 
         // 创建适配器并设置(本地)
@@ -72,8 +73,8 @@ public class User_Main extends AppCompatActivity {
             Toast.makeText(User_Main.this,"你已经在了哦",Toast.LENGTH_SHORT).show();
         });
 
-        findViewById(R.id.nav_short_videos).setOnClickListener(v -> {  // 短视频
-            Intent intent = new Intent(User_Main.this, ShortVideosActivity.class);
+        findViewById(R.id.nav_short_videos).setOnClickListener(v -> {  // 跳转到心理资源页面
+            Intent intent = new Intent(User_Main.this, PsychResourcesActivity.class);
             startActivity(intent);
         });
 
@@ -107,16 +108,7 @@ public class User_Main extends AppCompatActivity {
 
         });
 
-        // 跳转到心理资源页面
-//        findViewById(R.id.slider_recycler).setOnClickListener(v->{
-//            Intent intent = new Intent(User_Main.this, PsychResourcesActivity.class);
-//            startActivity(intent);
-//
-//        });
-        viewPager2.setOnClickListener(view -> {
-            Intent intent = new Intent(User_Main.this, PsychResourcesActivity.class);
-            startActivity(intent);
-        });
+
 
     }
 

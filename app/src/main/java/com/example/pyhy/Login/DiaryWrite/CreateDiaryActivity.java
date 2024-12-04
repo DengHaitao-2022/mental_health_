@@ -63,6 +63,11 @@ public class CreateDiaryActivity extends AppCompatActivity {
                 diary.setImagePath(imagePath);  // 设置图片路径
                 diary.setTimestamp(timestamp);  // 设置时间戳
 
+                // 如果没有图片路径，提示用户
+                if (imagePath == null) {
+                    Toast.makeText(CreateDiaryActivity.this, "没有选择图片", Toast.LENGTH_SHORT).show();
+                }
+
                 // 将日记保存到数据库
                 DiaryDatabaseHelper dbHelper = new DiaryDatabaseHelper(CreateDiaryActivity.this);
                 dbHelper.addDiary(diary);
@@ -71,6 +76,7 @@ public class CreateDiaryActivity extends AppCompatActivity {
                 finish();  // 保存完后关闭当前活动，返回上一页
             }
         });
+
     }
 
     // 处理图片选择结果
@@ -80,6 +86,12 @@ public class CreateDiaryActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == 1 && data != null) {
             Uri imageUri = data.getData();
             imagePath = Uri.parse(getRealPathFromURI(imageUri));  // 获取图片的本地路径
+            if (imageUri != null) {
+                imagePath = imageUri;  // 如果 Uri 不为 null，获取其路径
+            } else {
+                // 处理没有图片的情况，或者设置默认值
+                imagePath =null;  // 或者保持为 null 以表明没有图片
+            }
             diary.setImagePath(imagePath);  // 将图片路径设置到 diary 对象中
             imageView.setImageURI(imageUri);  // 显示图片
         }
@@ -92,11 +104,15 @@ public class CreateDiaryActivity extends AppCompatActivity {
         CursorLoader cursorLoader = new CursorLoader(this, uri, proj, null, null, null);
         Cursor cursor = cursorLoader.loadInBackground();
         if (cursor != null) {
-            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            filePath = cursor.getString(columnIndex);
-            cursor.close();
+            try {
+                int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                cursor.moveToFirst();
+                filePath = cursor.getString(columnIndex);
+            } finally {
+                cursor.close();  // 确保游标总是被关闭
+            }
         }
         return filePath;
     }
+
 }
