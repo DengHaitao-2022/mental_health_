@@ -14,6 +14,9 @@ public class Diary implements Serializable {
         this.imagePath = imagePath;
         this.timestamp = timestamp;
     }
+    public Diary(){
+
+    }
 
     // Getter和Setter方法
     public int getId() {

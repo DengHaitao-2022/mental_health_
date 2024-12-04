@@ -26,7 +26,8 @@ public class CreateDiaryActivity extends AppCompatActivity {
     private EditText editTextDiary;
     private Button buttonSaveDiary, buttonSelectImage;
     private ImageView imageView;
-    private String imagePath = "res/drawable/p_1.jpg";  // 用于存储图片的本地路径
+    private String imagePath = "";  // 用于存储图片的本地路径
+    private Diary diary;  // 用于存储日记内容和图片路径
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,9 @@ public class CreateDiaryActivity extends AppCompatActivity {
         buttonSaveDiary = findViewById(R.id.buttonSaveDiary);
         buttonSelectImage = findViewById(R.id.buttonSelectImage);
         imageView = findViewById(R.id.imageView);
+
+        // 初始化 Diary 对象
+        diary = new Diary();  // 这里可以根据需要传递其他信息给构造函数
 
         // 图片选择按钮点击事件
         buttonSelectImage.setOnClickListener(v -> {
@@ -51,12 +55,17 @@ public class CreateDiaryActivity extends AppCompatActivity {
             if (diaryText.isEmpty()) {
                 Toast.makeText(CreateDiaryActivity.this, "日记内容不能为空", Toast.LENGTH_SHORT).show();
             } else {
+                // 获取当前时间戳
                 String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-                Diary newDiary = new Diary(0, diaryText, imagePath, timestamp);
+
+                // 将图片路径和内容保存到 Diary 对象
+                diary.setText(diaryText);  // 设置日记内容
+                diary.setImagePath(imagePath);  // 设置图片路径
+                diary.setTimestamp(timestamp);  // 设置时间戳
 
                 // 将日记保存到数据库
                 DiaryDatabaseHelper dbHelper = new DiaryDatabaseHelper(CreateDiaryActivity.this);
-                dbHelper.addDiary(newDiary);
+                dbHelper.addDiary(diary);
 
                 Toast.makeText(CreateDiaryActivity.this, "日记保存成功", Toast.LENGTH_SHORT).show();
                 finish();  // 保存完后关闭当前活动，返回上一页
@@ -71,6 +80,7 @@ public class CreateDiaryActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == 1 && data != null) {
             Uri imageUri = data.getData();
             imagePath = getRealPathFromURI(imageUri);  // 获取图片的本地路径
+            diary.setImagePath(imagePath);  // 将图片路径设置到 diary 对象中
             imageView.setImageURI(imageUri);  // 显示图片
         }
     }
